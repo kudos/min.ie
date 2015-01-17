@@ -19,8 +19,8 @@ def catchall(request, id):
 
 def home(request):
   context = {'form': LinkForm}
-  if 'link' in request.POST:
-    link = Link(link=request.POST['url'])
+  if 'url' in request.POST:
+    link = Link(url=request.POST['url'])
     link.save();
     context['short_url'] = "http://" + str(request.get_host()) + "/" + str(link.id)
   return render(request, 'index.html', context)
