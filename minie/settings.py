@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 DEBUG = True
 TEMPLATE_DEBUG = True
 
-SECRET_KEY = 'uz+*54ipcwwpjjwkt+hb4o_7y0o-%6=@+$rmm2yoaw_7j_=vjw'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 ALLOWED_HOSTS = ['*']
 
@@ -30,16 +30,17 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'links',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'links/templates'),
 )
 
 ROOT_URLCONF = 'minie.urls'
