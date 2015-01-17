@@ -1,0 +1,1 @@
+web: gunicorn minie.wsgi --log-file -
