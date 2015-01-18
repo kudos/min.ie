@@ -22,7 +22,6 @@ def catchall(request, id):
       return redirect(link.url)
     return redirect("http://" + link.url)
   except Exception as e:
-    return HttpResponse(e)
     parsed = urlparse(id)
     if parsed.netloc:
       link = Link(url=id, ip=get_client_ip(request))
