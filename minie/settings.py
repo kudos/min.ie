@@ -14,8 +14,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['DEBUG']
-TEMPLATE_DEBUG = os.environ['DEBUG']
+DEBUG = os.environ['DEBUG'] == 'True'
+TEMPLATE_DEBUG = os.environ['DEBUG'] == 'True'
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
