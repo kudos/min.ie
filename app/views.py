@@ -1,6 +1,7 @@
 from urlparse import urlparse
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
+from django.db.models import F
 from django.contrib import messages
 from .models import Link, LinkForm
 
@@ -18,10 +19,12 @@ def catchall(request, id):
     try:
         link = Link.objects.get(id=id)
         parsed = urlparse(link.url)
+        Link.objects.filter(id=id).update(clicks=F('clicks')+1)
         if parsed.scheme:
             return redirect(link.url)
         return redirect("http://" + link.url)
     except Exception as e:
+        return  HttpResponse(e)
         parsed = urlparse(id)
         if parsed.netloc:
             link = Link(url=id, ip=get_client_ip(request))
