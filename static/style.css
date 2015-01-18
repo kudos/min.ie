@@ -856,6 +856,7 @@ there.
 /* Actual min.ie styles */
 
 .container {
+  margin-top: 25vh;
   width: 570px;
 }
 
