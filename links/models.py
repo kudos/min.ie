@@ -6,16 +6,16 @@ import random
 class Link(models.Model):
   id = models.CharField(primary_key=True, max_length=12)
   url = models.URLField(max_length=2048)
-  created_at = models.DateTimeField(auto_now_add=True)
+  created_at = models.DateTimeField(auto_now_add=False)
   clicks = models.IntegerField(default=0)
   ip = models.GenericIPAddressField(null=True)
 
   def __unicode__(self):
     return self.url
 
-  def generate_unique_id(self, length=12):
+  def generate_unique_id(self, length=8):
     attempts = 0
-    id = random_id()
+    id = random_id(length)
     try:
       while Link.objects.get(id=id) and attempts < 10:
         attempts = attempts + 1
@@ -37,9 +37,9 @@ class LinkForm(ModelForm):
     fields = ['url']
       
 
-def random_id():
+def random_id(length):
   rand = ''
-  for i in range(0,12):
+  for i in range(0,length):
     rand += int_to_char(random.randint(0,61));
   return rand;
 
