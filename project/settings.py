@@ -24,20 +24,20 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = (
-  'django.contrib.contenttypes',
-  'django.contrib.sessions',
-  'django.contrib.staticfiles',
-  'app',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.staticfiles',
+    'app',
 )
 
 MIDDLEWARE_CLASSES = (
-  'sslify.middleware.SSLifyMiddleware',
-  'django.contrib.sessions.middleware.SessionMiddleware',
-  'django.middleware.common.CommonMiddleware',
+    'sslify.middleware.SSLifyMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
 )
 
 TEMPLATE_DIRS = (
-  os.path.join(BASE_DIR, 'app/templates'),
+    os.path.join(BASE_DIR, 'app/templates'),
 )
 
 ROOT_URLCONF = 'project.urls'
@@ -51,7 +51,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
-  'default': dj_database_url.config()
+    'default': dj_database_url.config()
 }
 
 # Internationalization
@@ -74,5 +74,5 @@ STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-  os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static'),
 )
