@@ -857,7 +857,7 @@ there.
 
 .container {
   margin-top: 25vh;
-  width: 570px;
+  max-width: 570px;
 }
 
 .not-found h2 {
