@@ -1,5 +1,5 @@
 """
-Django settings for minie project.
+Django settings for min.ie project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -27,7 +27,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
-    'links',
+    'app',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -36,12 +36,12 @@ MIDDLEWARE_CLASSES = (
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'links/templates'),
+    os.path.join(BASE_DIR, 'app/templates'),
 )
 
-ROOT_URLCONF = 'minie.urls'
+ROOT_URLCONF = 'project.urls'
 
-WSGI_APPLICATION = 'minie.wsgi.application'
+WSGI_APPLICATION = 'project.wsgi.application'
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
