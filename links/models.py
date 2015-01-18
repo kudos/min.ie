@@ -31,7 +31,7 @@ class Link(models.Model):
 
 
 class LinkForm(ModelForm):
-  url = CharField(label='')
+  url = CharField(widget=TextInput(attrs={'class':'u-full-width', 'placeholder': 'Paste the link you want to shorten'}), label='')
   class Meta:
     model = Link
     fields = ['url']

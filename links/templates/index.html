@@ -2,32 +2,34 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="/static/normalize.css" />
+    <link rel="stylesheet" href="/static/skeleton.css" />
     <link rel="stylesheet" href="/static/style.css" />
     <title>minie links!</title>
   </head>
   <body>
 
-    <div id="main-box">
-      <form method="post" action="/">
-        <ul>
-          {{form.as_ul}}
-          <li><input type="submit" value="shrink" name="shrink" id="main-submit" /></li>
-        </ul>
-      </form>
-    </div>
-
-    <div id="logo-wrap">
+    <div class="container">
       <div id="logo">
         <a href="/"><img src="/static/minie.png" alt="min.ie" /></a>
       </div>
+
+      <form method="post" action="/">
+        {{form.url}}
+        <input type="submit" value="shrink" name="shrink" class="button-primary" />
+      </form>
+
       {% if short_url %}
       <form name="url">
-        <label onclick=\"document.url.short_link.focus();document.url.short_link.select();\" for=\"short_link\">Your Link</label>
-        <input name='short_link' value='{{short_url}}' id='short_link' readonly='true' size='25' onclick='javascript:this.focus();this.select();' />
+        <label onclick="document.url.short_link.focus();document.url.short_link.select();" for="short_link">Short Link</label>
+        <input type="text" class="u-full-width" name='short_link' value='{{short_url}}' readonly='true' onclick='javascript:this.focus();this.select();' />
       </form>
       {% endif %}
-      <div id="info">Drag this bookmarklet <a onclick="return false" href="javascript:void(window.location%20=%20'http://min.ie/'+window.location)">min.ie</a> to your bookmark bar, or just stick "min.ie/" before any link you want to shrink.</div>
-      <p>Django and Postgres Powered</p>
+      <div id="info">
+        <p>Makes links shorter, like this: <a href="https://min.ie/WVFdWJMa" target="_blank">https://min.ie/WVFdWJMa</a></p>
+        <p>Drag this bookmarklet <a onclick="return false" class="bookmark" href="javascript:void(window.location='http://min.ie/'+window.location)">min.ie</a> to your bookmark bar for quick shrinking. Then just click the bookmark on a page you want a short url for.</p>
+      </div>
+      <footer><a href="https://twitter.com/kudoz">Tweet</a> or <a href="https://github.com/kudos/min.ie">Fork</a>. &copy; <a href="http://crem.in">Jonathan Cremin</a></footer>
     </div>
 
     <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">

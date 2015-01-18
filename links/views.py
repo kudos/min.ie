@@ -33,7 +33,7 @@ def catchall(request, id):
 
 def home(request):
   context = {'form': LinkForm}
-  if 'short_url' in request.session:
+  if 'short_url' in request.session and request.session['short_url']:
     context['short_url'] = request.session['short_url']
     request.session['short_url'] = None
   if 'url' in request.POST:
