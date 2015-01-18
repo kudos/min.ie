@@ -6,7 +6,7 @@ import random
 class Link(models.Model):
   id = models.CharField(primary_key=True, max_length=12)
   url = models.URLField(max_length=2048)
-  created_at = models.DateTimeField(auto_now_add=False)
+  created_at = models.DateTimeField(auto_now_add=True)
   clicks = models.IntegerField(default=0)
   ip = models.GenericIPAddressField(null=True)
 
