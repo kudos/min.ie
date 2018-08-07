@@ -1,4 +1,4 @@
-from urlparse import urlparse
+from urllib.parse import urlparse
 from django.shortcuts import render, redirect
 from django.http import Http404, HttpResponse
 from django.db.models import F

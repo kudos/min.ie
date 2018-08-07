@@ -1,0 +1,21 @@
+version: "2"
+services:
+  app:
+    build: ./
+    environment:
+      DJANGO_SETTINGS_MODULE: app.settings
+      DATABASE_URL: postgres://minie:minie@database:5432/minie
+      DEBUG: "true"
+      SECRET_KEY: unsafe
+    volumes:
+      - ./:/app
+    ports:
+      - "8000:8000"
+  database:
+    image: "postgres:10-alpine"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: "minie"
+      POSTGRES_USER: "minie"
+      POSTGRES_DB: "minie"    
