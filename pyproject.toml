@@ -8,7 +8,7 @@ authors = ["Jonathan Cremin <jonathan@crem.in>"]
 python = "^3.6"
 django = "^2.2"
 dj-database-url = "^0.5.0"
-gunicorn = "^19.9"
+gunicorn = "^20.0"
 psycopg2-binary = "^2.8"
 whitenoise = "^5.0"
 
