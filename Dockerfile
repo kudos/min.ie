@@ -1,4 +1,4 @@
-FROM python:3.7.4-alpine3.10
+FROM python:3.7
 
 WORKDIR /app
 
@@ -7,8 +7,7 @@ EXPOSE 8000
 ENV DEBUG false
 ENV SECRET_KEY unsafe
 
-RUN pip install poetry && \
-    apk add postgresql-dev gcc python3-dev musl-dev
+RUN pip install poetry
 
 ADD pyproject.toml ./
 ADD poetry.lock ./
