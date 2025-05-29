@@ -1,41 +1,73 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/style.css" />
-    <title>minie links!</title>
-  </head>
-  <body>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/static/style.css" />
+        <title>minie links!</title>
+        <script
+            defer
+            data-domain="min.ie"
+            src="https://plausible.io/js/script.js"
+        ></script>
+    </head>
+    <body>
+        <div class="container">
+            <div id="logo">
+                <a href="/"><img src="/static/minie.png" alt="min.ie" /></a>
+            </div>
 
-    <div class="container">
-      <div id="logo">
-        <a href="/"><img src="/static/minie.png" alt="min.ie" /></a>
-      </div>
+            <form method="post" action="/">
+                {{form.url}}
+                <input
+                    type="submit"
+                    value="shrink"
+                    name="shrink"
+                    class="button-primary"
+                />
+            </form>
 
-      <form method="post" action="/">
-        {{form.url}}
-        <input type="submit" value="shrink" name="shrink" class="button-primary" />
-      </form>
-
-      {% if short_url %}
-      <form name="url">
-        <label onclick="document.url.short_link.focus();document.url.short_link.select();" for="short_link">Short Link</label>
-        <input type="text" class="u-full-width" name='short_link' value='{{short_url}}' readonly='true' onclick='javascript:this.focus();this.select();' />
-      </form>
-      {% endif %}
-      <div id="info">
-        <p>Makes links shorter, like this: <a href="https://min.ie/WVFdWJMa" target="_blank">https://min.ie/WVFdWJMa</a></p>
-        <p>Drag this bookmarklet <a onclick="return false" class="bookmark" href="javascript:void(window.location='https://min.ie/'+window.location)">min.ie</a> to your bookmark bar for quick shrinking. Then just click the bookmark on a page you want a short url for.</p>
-      </div>
-      <footer><a href="https://twitter.com/kudoz">Tweet</a> or <a href="https://github.com/kudos/min.ie">Fork</a>. &copy; <a href="https://crem.in">Jonathan Cremin</a></footer>
-    </div>
-
-    <script>
-      var _gaq=[['_setAccount','UA-66209-5'],['_trackPageview'],['_trackPageLoadTime']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
-    </script>
-  </body>
+            {% if short_url %}
+            <form name="url">
+                <label
+                    onclick="document.url.short_link.focus();document.url.short_link.select();"
+                    for="short_link"
+                    >Short Link</label
+                >
+                <input
+                    type="text"
+                    class="u-full-width"
+                    name="short_link"
+                    value="{{short_url}}"
+                    readonly="true"
+                    onclick="javascript:this.focus();this.select();"
+                />
+            </form>
+            {% endif %}
+            <div id="info">
+                <p>
+                    Makes links shorter, like this:
+                    <a href="https://min.ie/WVFdWJMa" target="_blank"
+                        >https://min.ie/WVFdWJMa</a
+                    >
+                </p>
+                <p>
+                    Drag this bookmarklet
+                    <a
+                        onclick="return false"
+                        class="bookmark"
+                        href="javascript:void(window.location='https://min.ie/'+window.location)"
+                        >min.ie</a
+                    >
+                    to your bookmark bar for quick shrinking. Then just click
+                    the bookmark on a page you want a short url for.
+                </p>
+            </div>
+            <footer>
+                Follow me on
+                <a href="https://social.crem.in/@jonathan">Mastodon</a>. &copy;
+                <a href="https://crem.in">Jonathan Cremin</a>
+            </footer>
+        </div>
+    </body>
 </html>
