@@ -1,28 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="/static/style.css" />
-    <title>minie links!</title>
-  </head>
-  <body>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/static/style.css" />
+        <link rel="icon" href="/static/favicon.png" type="image/x-icon" />
+        <title>minie links!</title>
+        <script
+            defer
+            data-domain="min.ie"
+            src="https://plausible.io/js/script.js"
+        ></script>
+    </head>
+    <body>
+        <div class="container not-found">
+            <div id="logo">
+                <a href="/"><img src="/static/minie.png" alt="min.ie" /></a>
+            </div>
 
-    <div class="container not-found">
-      <div id="logo">
-        <a href="/"><img src="/static/minie.png" alt="min.ie" /></a>
-      </div>
+            <h2>Page not found</h2>
+            <p>
+                Try this one instead
+                <a href="https://min.ie/WVFdWJMa" target="_blank"
+                    >https://min.ie/WVFdWJMa</a
+                >
+            </p>
 
-      <h2>Page not found</h2>
-      <p>Try this one instead <a href="https://min.ie/WVFdWJMa" target="_blank">https://min.ie/WVFdWJMa</a></p>
-      
-      <footer><a href="https://twitter.com/kudoz">Tweet</a> or <a href="https://github.com/kudos/min.ie">Fork</a>. &copy; <a href="http://crem.in">Jonathan Cremin</a></footer>
-    </div>
+            <footer>
+                Follow me on
+                <a href="https://social.crem.in/@jonathan">Mastodon</a>. &copy;
+                <a href="https://crem.in">Jonathan Cremin</a>
+            </footer>
+        </div>
 
-    <script>
-      var _gaq=[['_setAccount','UA-66209-5'],['_trackPageview'],['_trackPageLoadTime']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
-    </script>
-  </body>
+        <script>
+            var _gaq = [
+                ["_setAccount", "UA-66209-5"],
+                ["_trackPageview"],
+                ["_trackPageLoadTime"],
+            ];
+            (function (d, t) {
+                var g = d.createElement(t),
+                    s = d.getElementsByTagName(t)[0];
+                g.async = 1;
+                g.src =
+                    ("https:" == location.protocol ? "//ssl" : "//www") +
+                    ".google-analytics.com/ga.js";
+                s.parentNode.insertBefore(g, s);
+            })(document, "script");
+        </script>
+    </body>
 </html>
