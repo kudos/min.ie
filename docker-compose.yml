@@ -12,10 +12,10 @@ services:
     ports:
       - "8001:8000"
   database:
-    image: "postgres:10-alpine"
+    image: "postgres:17"
     ports:
       - "5433:5432"
     environment:
       POSTGRES_PASSWORD: "minie"
       POSTGRES_USER: "minie"
-      POSTGRES_DB: "minie"    
+      POSTGRES_DB: "minie"
