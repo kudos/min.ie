@@ -22,14 +22,14 @@ def catchall(request, id):
         Link.objects.filter(id=id).update(clicks=F('clicks')+1)
         if parsed.scheme:
             return redirect(link.url)
-        return redirect("http://" + link.url)
+        return redirect("https://" + link.url)
     except Exception as e:
         return  HttpResponse(e)
         parsed = urlparse(id)
         if parsed.netloc:
             link = Link(url=id, ip=get_client_ip(request))
             link.save()
-            request.session['short_url'] = "http://" + str(request.get_host()) + "/" + str(link.id)
+            request.session['short_url'] = "https://" + str(request.get_host()) + "/" + str(link.id)
             return redirect('/')
     raise Http404("Link does not exist")
 
@@ -42,6 +42,6 @@ def home(request):
     if 'url' in request.POST:
         link = Link(url=request.POST['url'], ip=get_client_ip(request))
         link.save()
-        request.session['short_url'] = "http://" + request.get_host() + "/" + link.id
+        request.session['short_url'] = "https://" + request.get_host() + "/" + link.id
         return redirect('/')
     return render(request, 'index.html', context)
