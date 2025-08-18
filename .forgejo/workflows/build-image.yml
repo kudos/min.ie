@@ -19,7 +19,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.FORGEJO_REGISTRY_TOKEN }}
       - name: Check out repository
-        uses: https://cremin.dev/actions/checkout@v4
+        uses: https://cremin.dev/actions/checkout@v5
       - name: Build image
         uses: https://cremin.dev/actions/buildah-build@v2
         with:
