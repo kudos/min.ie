@@ -5,9 +5,9 @@ description = "Makes links shorter"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-  "dj-database-url>=2.3.0",
-  "django>=5.2.1",
-  "gunicorn>=23.0.0",
-  "psycopg[binary]>=3.2.9",
-  "whitenoise>=6.9.0",
+  "dj-database-url>=3.0.1",
+  "django>=5.2.7",
+  "hypercorn>=0.17.3",
+  "psycopg[binary]>=3.2.10",
+  "whitenoise>=6.11.0",
 ]
