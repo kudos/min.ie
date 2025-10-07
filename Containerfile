@@ -16,4 +16,4 @@ ADD . .
 
 RUN uv run ./manage.py collectstatic --noinput
 
-CMD ["uv", "run", "hypercorn", "-b", "0.0.0.0:8000", "app.wsgi:application", "--access-logfile", "-"]
+CMD ["uv", "run", "opentelemetry-instrument", "gunicorn", "-b", "0.0.0.0:8000", "app.wsgi", "--log-file", "-", "--access-logfile", "-", "--error-logfile", "-"]
