@@ -4,6 +4,9 @@ from django.http import Http404, HttpResponse
 from django.db.models import F
 from django.contrib import messages
 from .models import Link, LinkForm
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def get_client_ip(request):
@@ -24,7 +27,6 @@ def catchall(request, id):
             return redirect(link.url)
         return redirect("https://" + link.url)
     except Exception as e:
-        return HttpResponse(e)
         parsed = urlparse(id)
         if parsed.netloc:
             link = Link(url=id, ip=get_client_ip(request))
