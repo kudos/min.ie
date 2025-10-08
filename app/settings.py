@@ -20,8 +20,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 logging.basicConfig(level=logging.DEBUG)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ["DEBUG"] or False
-TEMPLATE_DEBUG = os.environ["DEBUG"] or False
+DEBUG = os.getenv("DEBUG", "False") == "True"
+TEMPLATE_DEBUG = os.getenv("DEBUG", "False") == "True"
 
 SECRET_KEY = os.environ["SECRET_KEY"]
 
