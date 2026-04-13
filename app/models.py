@@ -10,7 +10,7 @@ class Link(models.Model):
     clicks = models.IntegerField(default=0)
     ip = models.GenericIPAddressField(null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.url
 
     def generate_unique_id(self, length=8):

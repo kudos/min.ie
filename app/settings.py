@@ -2,10 +2,10 @@
 Django settings for min.ie project.
 
 For more information on this file, see
-https://docs.djangoproject.com/en/1.7/topics/settings/
+https://docs.djangoproject.com/en/6.0/topics/settings/
 
 For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.7/ref/settings/
+https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 import dj_database_url
@@ -21,7 +21,6 @@ logging.basicConfig(level=logging.DEBUG)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "False") == "True"
-TEMPLATE_DEBUG = os.getenv("DEBUG", "False") == "True"
 
 SECRET_KEY = os.environ["SECRET_KEY"]
 
@@ -76,8 +75,6 @@ LANGUAGE_CODE = "en-us"
 TIME_ZONE = "UTC"
 
 USE_I18N = True
-
-USE_L10N = True
 
 USE_TZ = False
 
