@@ -1,10 +1,11 @@
-from urllib.parse import urlparse
-from django.shortcuts import render, redirect
-from django.http import Http404, HttpResponse
-from django.db.models import F
-from django.contrib import messages
-from .models import Link, LinkForm
 import logging
+from urllib.parse import urlparse
+
+from django.db.models import F
+from django.http import Http404
+from django.shortcuts import redirect, render
+
+from .models import Link, LinkForm
 
 logger = logging.getLogger(__name__)
 

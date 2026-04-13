@@ -1,6 +1,7 @@
-from django.db import models
-from django.forms import ModelForm, CharField, TextInput
 import random
+
+from django.db import models
+from django.forms import CharField, ModelForm, TextInput
 
 
 class Link(models.Model):
@@ -19,7 +20,7 @@ class Link(models.Model):
         try:
             while Link.objects.get(id=id) and attempts < 10:
                 attempts = attempts + 1
-                id = random_id()
+                id = random_id(length)
         except:
             pass
         return id
@@ -31,27 +32,32 @@ class Link(models.Model):
 
 
 class LinkForm(ModelForm):
-    url = CharField(widget=TextInput(attrs={
-                    'class': 'u-full-width',
-                    'placeholder': 'Paste the link you want to shorten'}),
-                    label='')
+    url = CharField(
+        widget=TextInput(
+            attrs={
+                "class": "u-full-width",
+                "placeholder": "Paste the link you want to shorten",
+            }
+        ),
+        label="",
+    )
 
     class Meta:
         model = Link
-        fields = ['url']
+        fields = ["url"]
 
 
 def random_id(length):
-    rand = ''
+    rand = ""
     for i in range(0, length):
         rand += int_to_char(random.randint(0, 61))
     return rand
 
 
 def int_to_char(int):
-    if(int < 10):
+    if int < 10:
         char = chr(int + 48)
-    elif(int < 36):
+    elif int < 36:
         char = chr(int + 55)
     else:
         char = chr(int + 61)

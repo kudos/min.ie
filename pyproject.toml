@@ -5,12 +5,12 @@ description = "Makes links shorter"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-  "dj-database-url>=3.0.1",
+  "dj-database-url>=3.1.2",
   "django>=6.0",
-  "gunicorn>=23.0.0",
-  "psycopg[binary]>=3.2.10",
-  "whitenoise>=6.11.0",
-  "opentelemetry-distro>=0.58b0",
-  "opentelemetry-exporter-otlp>=1.37.0",
-  "opentelemetry-instrumentation-django>=0.58b0",
+  "gunicorn>=25.3.0",
+  "psycopg[binary]>=3.3.3",
+  "whitenoise>=6.12.0",
+  "opentelemetry-distro>=0.62b0",
+  "opentelemetry-exporter-otlp>=1.41.0",
+  "opentelemetry-instrumentation-django>=0.62b0",
 ]
