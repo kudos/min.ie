@@ -1,7 +1,16 @@
-import random
+import secrets
 
 from django.db import models
-from django.forms import CharField, ModelForm, TextInput
+
+ID_LENGTH = 8
+
+
+def generate_unique_id():
+    for _ in range(10):
+        id = secrets.token_urlsafe(ID_LENGTH)[:ID_LENGTH]
+        if not Link.objects.filter(id=id).exists():
+            return id
+    raise RuntimeError("Could not generate a unique link ID after 10 attempts")
 
 
 class Link(models.Model):
@@ -14,51 +23,9 @@ class Link(models.Model):
     def __str__(self):
         return self.url
 
-    def generate_unique_id(self, length=8):
-        attempts = 0
-        id = random_id(length)
-        try:
-            while Link.objects.get(id=id) and attempts < 10:
-                attempts = attempts + 1
-                id = random_id(length)
-        except:
-            pass
-        return id
-
     def save(self, *args, **kwargs):
         if not self.pk:
-            self.id = self.generate_unique_id()
-        super(Link, self).save(*args, **kwargs)
+            self.id = generate_unique_id()
+        super().save(*args, **kwargs)
 
 
-class LinkForm(ModelForm):
-    url = CharField(
-        widget=TextInput(
-            attrs={
-                "class": "u-full-width",
-                "placeholder": "Paste the link you want to shorten",
-            }
-        ),
-        label="",
-    )
-
-    class Meta:
-        model = Link
-        fields = ["url"]
-
-
-def random_id(length):
-    rand = ""
-    for i in range(0, length):
-        rand += int_to_char(random.randint(0, 61))
-    return rand
-
-
-def int_to_char(int):
-    if int < 10:
-        char = chr(int + 48)
-    elif int < 36:
-        char = chr(int + 55)
-    else:
-        char = chr(int + 61)
-    return char
