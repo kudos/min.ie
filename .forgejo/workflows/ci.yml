@@ -5,17 +5,31 @@ on:
     branches: main
 
 jobs:
-  test:
+  build:
     runs-on: self-hosted
     steps:
+      - name: Fix for bad os check
+        run: echo "RUNNER_OS=Linux" >> $GITHUB_ENV
       - name: Check out repository
         uses: https://cremin.dev/actions/checkout@v4
       - name: Build image
-        run: podman build -t minie-test .
-      - name: Run tests
-        run: podman run --rm -e DATABASE_URL=sqlite:///test.db minie-test uv run manage.py test app
+        uses: https://cremin.dev/actions/buildah-build@v2
+        with:
+          containerfiles: ./Containerfile
+          context: ./
+          oci: true
+          layers: true
+          image: minie
+          tags: ${{ github.sha }}
 
-  build-image:
+  test:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Run tests
+        run: podman run --rm -e DATABASE_URL=sqlite:///test.db minie:${{ github.sha }} uv run manage.py test app
+
+  push:
     needs: test
     runs-on: self-hosted
     steps:
@@ -29,17 +43,6 @@ jobs:
           registry: cremin.dev
           username: ${{ github.actor }}
           password: ${{ secrets.FORGEJO_REGISTRY_TOKEN }}
-      - name: Check out repository
-        uses: https://cremin.dev/actions/checkout@v4
-      - name: Build image
-        uses: https://cremin.dev/actions/buildah-build@v2
-        with:
-          containerfiles: ./Containerfile
-          context: ./
-          oci: true
-          layers: true
-          image: minie
-          tags: latest ${{ github.sha }}
       - name: Push image
         uses: https://cremin.dev/actions/push-to-registry@v2
         with:
