@@ -5,7 +5,18 @@ on:
     branches: main
 
 jobs:
+  test:
+    runs-on: self-hosted
+    steps:
+      - name: Check out repository
+        uses: https://cremin.dev/actions/checkout@v4
+      - name: Build image
+        run: podman build -t minie-test .
+      - name: Run tests
+        run: podman run --rm -e DATABASE_URL=sqlite:///test.db minie-test uv run manage.py test app
+
   build-image:
+    needs: test
     runs-on: self-hosted
     steps:
       - name: Set current date as env variable
