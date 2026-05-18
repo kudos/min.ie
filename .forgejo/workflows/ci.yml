@@ -20,7 +20,7 @@ jobs:
           oci: true
           layers: true
           image: minie
-          tags: ${{ github.sha }}
+          tags: latest ${{ github.sha }}
 
   test:
     needs: build
